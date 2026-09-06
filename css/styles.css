@@ -246,3 +246,21 @@ body {
     transform: translateY(-4px);
     transition: 0.2s;
 }
+
+@media (max-width: 576px) {
+    .destacados {
+        padding: 32px 16px;
+    }
+
+    .destacados-titulo {
+        font-size: 1.8rem;
+    }
+
+    .tarjeta {
+        width: 260px;
+    }
+
+    .tarjeta-imagen {
+        height: 150px;
+    }
+}
