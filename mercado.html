@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mercado | Infraganti</title>
+
+    <link rel="icon" type="image/png" href="./assets/icons/icon.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/mercado.css">
+</head>
+
+<body>
+
+    <!-- Navegación principal -->
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-dark header-custom">
+
+            <div class="container-fluid">
+
+                <a class="navbar-brand brand-section" href="index.html">
+
+                    <img
+                        src="./assets/icons/icon.png"
+                        alt="Logo de Infraganti"
+                        class="brand-logo">
+
+                    <span class="brand-text">
+                        Infraganti
+                    </span>
+
+                </a>
+
+
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menuMercado"
+                    aria-controls="menuMercado"
+                    aria-expanded="false"
+                    aria-label="Abrir menú">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+
+                <div
+                    class="collapse navbar-collapse"
+                    id="menuMercado">
+
+
+                    <!-- Buscador -->
+
+                    <div class="mercado-buscador">
+
+                        <div class="search-container">
+
+                            <span class="search-icon">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    width="20"
+                                    height="20"
+                                    fill="#0e1724">
+
+                                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5
+                                    16 5.91 13.09 3 9.5 3S3 5.91 3 9.5
+                                    5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57
+                                    l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6
+                                    0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5
+                                    14 7.01 14 9.5 11.99 14 9.5 14z"/>
+
+                                </svg>
+
+                            </span>
+
+
+                            <input
+                                type="search"
+                                id="buscadorProducto"
+                                class="search-input"
+                                placeholder="Buscar productos..."
+                                aria-label="Buscar productos">
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Menú -->
+
+                    <ul class="navbar-nav ms-auto">
+
+                        <li class="nav-item">
+
+                            <button
+                                type="button"
+                                class="nav-link btn btn-link carrito-nav"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalCarrito">
+
+                                🛒 Carrito
+
+                            </button>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a
+                                class="nav-link"
+                                href="index.html">
+
+                                Inicio
+
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a
+                                class="nav-link"
+                                href="publicar.html">
+
+                                Publicar
+
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a
+                                class="nav-link active"
+                                href="mercado.html">
+
+                                Mercado
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- Encabezado del mercado -->
+
+        <section class="mercado-encabezado">
+
+            <div class="container-fluid">
+
+                <h1>
+                    Mercado
+                </h1>
+
+                <p>
+                    Encuentra productos publicados por otros estudiantes
+                    de la comunidad universitaria.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Catálogo y filtros -->
+
+        <section class="mercado-contenido">
+
+            <div class="container-fluid">
+
+                <div class="row g-4">
+
+
+                    <!-- Filtros -->
+
+                    <aside class="col-12 col-lg-3">
+
+                        <div class="panel-filtros">
+
+                            <div class="filtros-header">
+
+                                <h2>
+                                    Filtros
+                                </h2>
+
+                                <button
+                                    id="limpiarFiltros"
+                                    class="btn-limpiar"
+                                    type="button">
+
+                                    Limpiar
+
+                                </button>
+
+                            </div>
+
+
+                            <div class="filtro-grupo">
+
+                                <label for="filtroCategoria">
+                                    Categoría
+                                </label>
+
+                                <select
+                                    id="filtroCategoria"
+                                    class="form-select">
+
+                                    <option value="todas">
+                                        Todas las categorías
+                                    </option>
+
+                                    <option value="libros">
+                                        Libros
+                                    </option>
+
+                                    <option value="computadores">
+                                        Computadores
+                                    </option>
+
+                                    <option value="accesorios">
+                                        Accesorios
+                                    </option>
+
+                                    <option value="instrumentos">
+                                        Instrumentos
+                                    </option>
+
+                                    <option value="deportes">
+                                        Artículos deportivos
+                                    </option>
+
+                                    <option value="otros">
+                                        Otros productos
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="filtro-grupo">
+
+                                <label for="precioMinimo">
+                                    Precio mínimo
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="precioMinimo"
+                                    class="form-control"
+                                    min="0"
+                                    placeholder="Ej: 10000">
+
+                            </div>
+
+
+                            <div class="filtro-grupo">
+
+                                <label for="precioMaximo">
+                                    Precio máximo
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="precioMaximo"
+                                    class="form-control"
+                                    min="0"
+                                    placeholder="Ej: 500000">
+
+                            </div>
+
+
+                            <div class="filtro-grupo">
+
+                                <label for="ordenProductos">
+                                    Ordenar por
+                                </label>
+
+                                <select
+                                    id="ordenProductos"
+                                    class="form-select">
+
+                                    <option value="relevancia">
+                                        Relevancia
+                                    </option>
+
+                                    <option value="menor">
+                                        Precio: menor a mayor
+                                    </option>
+
+                                    <option value="mayor">
+                                        Precio: mayor a menor
+                                    </option>
+
+                                    <option value="nombre">
+                                        Nombre A-Z
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </aside>
+
+
+                    <!-- Catálogo -->
+
+                    <section
+                        class="col-12 col-lg-9"
+                        aria-labelledby="tituloProductos">
+
+
+                        <div class="productos-header">
+
+                            <div>
+
+                                <h2 id="tituloProductos">
+                                    Productos publicados
+                                </h2>
+
+                                <p id="contadorProductos">
+                                    Mostrando productos
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Mensaje cuando no existen productos -->
+
+                        <div
+                            id="mensajeSinProductos"
+                            class="mensaje-sin-productos"
+                            hidden>
+
+                            <h3>
+                                No encontramos productos
+                            </h3>
+
+                            <p>
+                                Intenta cambiar la búsqueda o los filtros.
+                            </p>
+
+                        </div>
+
+
+                        <!-- Productos generados por JavaScript -->
+
+                        <div
+                            id="catalogoProductos"
+                            class="row g-4">
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         MODAL DETALLE DEL PRODUCTO
+         ========================================= -->
+
+    <div
+        class="modal fade"
+        id="modalProducto"
+        tabindex="-1"
+        aria-labelledby="tituloModalProducto"
+        aria-hidden="true">
+
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+
+            <div class="modal-content modal-producto">
+
+                <div class="modal-header">
+
+                    <h2
+                        class="modal-title"
+                        id="tituloModalProducto">
+
+                        Producto
+
+                    </h2>
+
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Cerrar">
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="modal-body"
+                    id="detalleProducto">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         MODAL CARRITO
+         ========================================= -->
+
+    <div
+        class="modal fade"
+        id="modalCarrito"
+        tabindex="-1"
+        aria-labelledby="tituloCarrito"
+        aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content modal-producto">
+
+                <div class="modal-header">
+
+                    <h2
+                        class="modal-title"
+                        id="tituloCarrito">
+
+                        Carrito de compra
+
+                    </h2>
+
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Cerrar">
+
+                    </button>
+
+                </div>
+
+
+                <div class="modal-body">
+
+                    <div id="contenidoCarrito">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Footer -->
+
+    <footer class="site-footer">
+
+        <p>
+            Desarrollo Web y Móvil 2026
+        </p>
+
+    </footer>
+
+
+    <!-- Bootstrap -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript del mercado -->
+
+    <script src="js/mercado.js"></script>
+
+</body>
+
+</html>
+
