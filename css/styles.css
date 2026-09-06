@@ -241,3 +241,8 @@ body {
     overflow-x: auto;
     padding-bottom: 12px;
 }
+
+.tarjeta:hover {
+    transform: translateY(-4px);
+    transition: 0.2s;
+}
