@@ -19,3 +19,42 @@ const categorias = [
 ];
 
 console.log("Categorias cargadas: " + categorias.length);
+
+function acortarTexto(texto, largo) {
+    if (texto.length > largo) {
+        return texto.substring(0, largo) + "...";
+    }
+    return texto;
+}
+
+function formatearPrecio(precio) {
+    if (precio > 0) {
+        return precio + " CLP";
+    }
+    return "0 CLP";
+}
+
+function formatearUsuario(usuario) {
+    if (usuario === "") {
+        return "Por usuario";
+    }
+    return "Por " + usuario;
+}
+
+function crearTarjeta(producto) {
+    let html = "";
+
+    html += '<article class="tarjeta">';
+    html += '<div class="tarjeta-imagen"></div>';
+    html += '<div class="tarjeta-cuerpo">';
+    html += '<h4 class="tarjeta-nombre">' + producto.nombre + '</h4>';
+    html += '<p class="tarjeta-texto">' + acortarTexto(producto.descripcion, LARGO_DESCRIPCION) + '</p>';
+    html += '<div class="tarjeta-pie">';
+    html += '<span class="tarjeta-precio">' + formatearPrecio(producto.precio) + '</span>';
+    html += '<span class="tarjeta-usuario">' + formatearUsuario(producto.usuario) + '</span>';
+    html += '</div>';
+    html += '</div>';
+    html += '</article>';
+
+    return html;
+}
