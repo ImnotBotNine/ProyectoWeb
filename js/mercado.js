@@ -11,7 +11,7 @@ let productos = [
 
     {
         id: 1,
-        nombre: "Calculadora científica Casio",
+        nombre: "Calculadora Científica Escolar 240",
         categoria: "otros",
         precio: 15000,
         descripcion: "Calculadora científica en buen estado, ideal para estudiantes de ingeniería.",
@@ -24,7 +24,7 @@ let productos = [
 
     {
         id: 2,
-        nombre: "Libro Cálculo Universitario",
+        nombre: "Libro Cálculo I Universitario",
         categoria: "libros",
         precio: 22000,
         descripcion: "Libro de cálculo utilizado durante el primer año universitario. Buen estado.",
@@ -37,7 +37,7 @@ let productos = [
 
     {
         id: 3,
-        nombre: "Notebook Lenovo",
+        nombre: "Notebook Lenovo Ideapad Slim 3",
         categoria: "computadores",
         precio: 450000,
         descripcion: "Notebook para estudio y trabajo. Incluye cargador y se encuentra en buen estado.",
@@ -50,7 +50,7 @@ let productos = [
 
     {
         id: 4,
-        nombre: "Audífonos Bluetooth",
+        nombre: "Audifonos Bluetooh Active Silence Studio",
         categoria: "accesorios",
         precio: 25000,
         descripcion: "Audífonos inalámbricos con estuche de carga y buena autonomía.",
@@ -63,7 +63,7 @@ let productos = [
 
     {
         id: 5,
-        nombre: "Guitarra acústica",
+        nombre: "Guitarra Acústica Vizcaya Arcg44 Cuerdas De Nylon Sunburst",
         categoria: "instrumentos",
         precio: 85000,
         descripcion: "Guitarra acústica ideal para principiantes. Incluye funda.",
@@ -76,7 +76,7 @@ let productos = [
 
     {
         id: 6,
-        nombre: "Balón de fútbol",
+        nombre: "Balón De Futbol Dribbling Drb Prime N°5",
         categoria: "deportes",
         precio: 12000,
         descripcion: "Balón de fútbol en buen estado para entrenamientos y partidos.",
@@ -89,7 +89,7 @@ let productos = [
 
     {
         id: 7,
-        nombre: "Mouse inalámbrico",
+        nombre: "Mouse Inalámbrico Hp 150",
         categoria: "accesorios",
         precio: 10000,
         descripcion: "Mouse inalámbrico compacto y cómodo para estudiar o trabajar.",
@@ -115,7 +115,7 @@ let productos = [
 
     {
         id: 9,
-        nombre: "Mochila universitaria",
+        nombre: "Mochila Notebook Impermeable Antirrobo",
         categoria: "otros",
         precio: 20000,
         descripcion: "Mochila con compartimento para notebook y múltiples bolsillos.",
