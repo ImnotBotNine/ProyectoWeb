@@ -163,51 +163,6 @@ body {
     margin: 0 0 32px 0;
 }
 
-.tarjeta {
-    flex: 0 0 auto;
-    width: 350px;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.tarjeta-imagen {
-    height: 195px;
-    background-color: var(--gris-imagen);
-}
-
-.tarjeta-cuerpo {
-    background-color: var(--gris-tarjeta);
-    color: var(--text-white);
-    padding: 16px 18px;
-}
-
-.tarjeta-nombre {
-    font-size: 1rem;
-    margin: 0 0 8px 0;
-}
-
-.tarjeta-texto {
-    font-size: 0.9rem;
-    color: #cdd2d9;
-    margin: 0 0 14px 0;
-}
-
-.tarjeta-pie {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.tarjeta-precio {
-    font-size: 1.15rem;
-    font-weight: bold;
-}
-
-.tarjeta-usuario {
-    font-size: 0.85rem;
-    color: #cdd2d9;
-}
-
 .fila-categoria {
     margin-bottom: 40px;
 }
