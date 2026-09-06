@@ -18,7 +18,19 @@ const categorias = [
     { id: "otros", titulo: "Otros productos" }
 ];
 
-console.log("Categorias cargadas: " + categorias.length);
+function dibujarDestacados() {
+    const contenedor = document.getElementById("listaDestacados");
+    let html = "";
+
+    for (let i = 0; i < categorias.length; i++) {
+        html += crearFila(categorias[i]);
+    }
+
+    contenedor.innerHTML = html;
+}
+
+
+document.addEventListener("DOMContentLoaded", dibujarDestacados);
 
 function acortarTexto(texto, largo) {
     if (texto.length > largo) {
