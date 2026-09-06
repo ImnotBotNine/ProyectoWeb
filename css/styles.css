@@ -52,3 +52,20 @@ body {
     min-height: 76px;
     border-bottom: 5px solid var(--color-acento);
 }
+
+.brand-section {
+    display: flex;
+    align-items: center;
+}
+
+.brand-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    margin-right: 8px;
+}
+
+.brand-text {
+    font-size: 1.5rem;
+    color: var(--text-white);
+}
