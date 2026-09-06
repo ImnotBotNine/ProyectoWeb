@@ -38,3 +38,11 @@ body {
     color: var(--text-white);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 }
+
+@media (max-width: 576px) {
+    .hero-content {
+        max-width: 300px;
+        width: 88%;
+        padding: 22px 18px;
+    }
+}
