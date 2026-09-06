@@ -58,3 +58,27 @@ function crearTarjeta(producto) {
 
     return html;
 }
+
+function crearTarjetas(cantidad) {
+    let html = "";
+
+    for (let i = 0; i < cantidad; i++) {
+        html += crearTarjeta(productoBase);
+    }
+
+    return html;
+}
+
+function crearFila(categoria) {
+    let html = "";
+
+    html += '<section class="fila-categoria">';
+    html += '<div class="fila-titulo">';
+    html += '<h3>' + categoria.titulo + '</h3>';
+    html += '<a class="enlace-mercado" href="mercado.html">Ver en el Mercado</a>';
+    html += '</div>';
+    html += '<div class="carrusel">' + crearTarjetas(CANTIDAD_POR_FILA) + '</div>';
+    html += '</section>';
+
+    return html;
+}

@@ -207,3 +207,37 @@ body {
     font-size: 0.85rem;
     color: #cdd2d9;
 }
+
+.fila-categoria {
+    margin-bottom: 40px;
+}
+
+.fila-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.fila-titulo h3 {
+    font-size: 1.15rem;
+    color: var(--bg-dark);
+    margin: 0;
+}
+
+.enlace-mercado {
+    color: var(--color-acento);
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.enlace-mercado:hover {
+    text-decoration: underline;
+}
+
+.carrusel {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+}
