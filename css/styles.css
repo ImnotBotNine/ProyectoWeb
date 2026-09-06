@@ -2,6 +2,8 @@
     --bg-dark: #0e1724;
     --color-acento: #9c0e20;
     --text-white: #ffffff;
+    --gris-tarjeta: #434b56;
+    --gris-imagen: #e3e6eb;
 }
  
 body {
@@ -148,4 +150,15 @@ body {
         width: 88%;
         padding: 22px 18px;
     }
+}
+
+.destacados {
+    padding: 48px 24px;
+}
+
+.destacados-titulo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--bg-dark);
+    margin: 0 0 32px 0;
 }
