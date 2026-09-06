@@ -814,6 +814,27 @@ limpiarFiltros.addEventListener(
     limpiarTodosLosFiltros
 );
 
+function aplicarCategoriaDeLaUrl() {
+ 
+    const parametros =
+        new URLSearchParams(window.location.search);
+ 
+    const categoria =
+        parametros.get("categoria");
+ 
+    if (categoria && nombresCategorias[categoria]) {
+ 
+        filtroCategoria.value = categoria;
+ 
+        aplicarFiltros();
+ 
+        return true;
+ 
+    }
+ 
+    return false;
+ 
+}
 
 /* =========================================
    INICIO
@@ -823,10 +844,13 @@ document.addEventListener(
     "DOMContentLoaded",
     function() {
 
-        mostrarProductos(productos);
+        if (!aplicarCategoriaDeLaUrl()) {
+
+            mostrarProductos(productos);
+
+        }
 
         mostrarCarrito();
 
     }
 );
-

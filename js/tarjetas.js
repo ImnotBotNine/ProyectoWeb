@@ -73,6 +73,13 @@ function formatearUsuario(usuario) {
     return "Por " + usuario;
 }
 
+function enlaceCategoria(idCategoria) {
+    if (idCategoria === "nuevos") {
+        return "mercado.html";
+    }
+    return "mercado.html?categoria=" + idCategoria;
+}
+
 function crearTarjeta(producto) {
     let html = "";
 
@@ -115,7 +122,7 @@ function crearFila(categoria) {
     html += '<section class="fila-categoria">';
     html += '<div class="fila-titulo">';
     html += '<h3>' + categoria.titulo + '</h3>';
-    html += '<a class="enlace-mercado" href="mercado.html">Ver en el Mercado</a>';
+    html += '<a class="enlace-mercado" href="' + enlaceCategoria(categoria.id) + '">Ver en el Mercado</a>';
     html += '</div>';
     html += '<div class="carrusel">' + crearTarjetas(lista) + '</div>';
     html += '</section>';
