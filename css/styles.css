@@ -46,3 +46,9 @@ body {
         padding: 22px 18px;
     }
 }
+
+.header-custom {
+    background-color: var(--bg-dark);
+    min-height: 76px;
+    border-bottom: 5px solid var(--color-acento);
+}
