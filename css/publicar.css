@@ -45,6 +45,12 @@
     box-shadow: 0 0 0 0.2rem rgba(156, 14, 32, 0.15);
 }
 
+.panel-formulario .invalid-feedback {
+    display: block;
+    min-height: 20px;
+    margin-top: 4px;
+}
+
 .ayuda-campo {
     margin-top: 4px;
     color: #69717c;
@@ -103,4 +109,88 @@
         flex-direction: column;
         align-items: stretch;
     }
+}
+
+.panel-publicados {
+    margin-top: 32px;
+}
+
+.panel-publicados h2 {
+    color: var(--bg-dark);
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.publicado {
+    display: block;
+    background-color: var(--gris-tarjeta);
+    color: var(--text-white);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 12px;
+}
+
+.publicado-categoria {
+    color: #cdd2d9;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.publicado-nombre {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 6px 0 8px 0;
+}
+
+.publicado-texto {
+    color: #cdd2d9;
+    font-size: 0.9rem;
+    margin: 0 0 14px 0;
+}
+
+.publicado-pie {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.publicado-precio {
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+
+.publicado-usuario {
+    color: #cdd2d9;
+    font-size: 0.85rem;
+}
+
+.vista-previa {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 12px;
+}
+
+.vista-previa img {
+    width: 110px;
+    height: 82px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: var(--gris-imagen);
+}
+
+.btn-quitar-imagen {
+    border: 1px solid #cdd2d9;
+    border-radius: 7px;
+    padding: 7px 14px;
+    background-color: transparent;
+    color: var(--bg-dark);
+    font-size: 0.9rem;
+}
+
+.btn-quitar-imagen:hover {
+    background-color: #e3e6eb;
 }
