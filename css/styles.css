@@ -95,6 +95,14 @@ body {
     padding-right: 16px;
 }
 
+@media (max-width: 991px) {
+    .search-section {
+        width: 100%;
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+}
+
 .site-footer {
     background-color: var(--bg-dark);
     border-top: 5px solid var(--color-acento);
