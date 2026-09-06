@@ -95,12 +95,10 @@ body {
     padding-right: 16px;
 }
 
-@media (max-width: 991px) {
-    .search-section {
-        width: 100%;
-        margin-top: 12px;
-        margin-bottom: 12px;
-    }
+.search-icon {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
 }
 
 .site-footer {
@@ -113,4 +111,20 @@ body {
 
 .site-footer p {
     margin: 0;
+}
+
+@media (max-width: 991px) {
+    .search-section {
+        width: 100%;
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+}
+ 
+@media (max-width: 576px) {
+    .hero-content {
+        max-width: 300px;
+        width: 88%;
+        padding: 22px 18px;
+    }
 }
