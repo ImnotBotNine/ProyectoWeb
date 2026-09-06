@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infraganti</title>
+    <link rel="icon" type="image/png" href="./assets/icons/icon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/publicar.css">
+</head>
+ 
+<body>
+ 
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark header-custom">
+            <div class="container-fluid">
+
+                <a class="navbar-brand brand-section" href="index.html">
+                    <img
+                        src="./assets/icons/icon.png"
+                        alt="Logo de Infraganti"
+                        class="brand-logo">
+                    <span class="brand-text">
+                        Infraganti
+                    </span>
+                </a>
+ 
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menuPublicar"
+                    aria-controls="menuPublicar"
+                    aria-expanded="false"
+                    aria-label="Abrir menú">
+ 
+                    <span class="navbar-toggler-icon"></span>
+ 
+                </button>
+ 
+                <div class="collapse navbar-collapse" id="menuPublicar">
+ 
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="publicar.html">Publicar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mercado.html">Mercado</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+ 
+    </header>
+ 
+    <main>
+
+<section class="publicar-encabezado">
+
+    <div class="container-fluid">
+        <h1>
+            Publicar un producto
+        </h1>
+        <p>
+            Completa los datos y tu publicación aparecerá en el Mercado.
+        </p>
+    </div>
+
+</section>
+
+<section class="publicar-contenido">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8">
+                <div class="panel-formulario">
+                    <form id="formPublicar" novalidate>
+
+<div class="mb-3">
+
+    <label for="nombre" class="form-label">
+        Nombre del producto *
+    </label>
+
+    <input
+        type="text"
+        class="form-control"
+        id="nombre">
+
+    <div class="invalid-feedback" id="errorNombre"></div>
+
+</div>
+
+<div class="mb-3">
+
+    <label for="categoria" class="form-label">
+        Categoría *
+    </label>
+
+    <select class="form-select" id="categoria">
+
+        <option value="">Elige una categoría</option>
+        <option value="libros">Libros</option>
+        <option value="computadores">Computadores</option>
+        <option value="accesorios">Accesorios</option>
+        <option value="instrumentos">Instrumentos</option>
+        <option value="deportes">Artículos deportivos</option>
+        <option value="otros">Otros productos</option>
+
+    </select>
+
+    <div class="invalid-feedback" id="errorCategoria"></div>
+
+</div>
+
+<div class="mb-3">
+
+    <label for="precio" class="form-label">
+        Precio en pesos *
+    </label>
+
+    <input
+        type="number"
+        class="form-control"
+        id="precio"
+        placeholder="Ej: 22000">
+
+    <div class="invalid-feedback" id="errorPrecio"></div>
+
+</div>
+
+<div class="mb-3">
+
+    <label for="descripcion" class="form-label">
+        Descripción *
+    </label>
+
+    <textarea
+        class="form-control"
+        id="descripcion"
+        rows="4"
+        placeholder="Cuenta en qué estado está y qué incluye"></textarea>
+
+    <div class="ayuda-campo" id="contadorDescripcion">
+        0 caracteres
+    </div>
+
+    <div class="invalid-feedback" id="errorDescripcion"></div>
+
+</div>
+
+
+<div class="row">
+
+    <div class="col-12 col-md-6 mb-3">
+
+        <label for="vendedor" class="form-label">
+            Tu nombre *
+        </label>
+
+        <input
+            type="text"
+            class="form-control"
+            id="vendedor">
+
+        <div class="invalid-feedback" id="errorVendedor"></div>
+
+    </div>
+
+
+    <div class="col-12 col-md-6 mb-3">
+
+        <label for="carrera" class="form-label">
+            Tu carrera *
+        </label>
+
+        <input
+            type="text"
+            class="form-control"
+            id="carrera">
+
+        <div class="invalid-feedback" id="errorCarrera"></div>
+
+    </div>
+
+</div>
+
+<div class="mb-3">
+
+    <label for="contacto" class="form-label">
+        Lugar de entrega *
+    </label>
+
+    <input
+        type="text"
+        class="form-control"
+        id="contacto"
+        placeholder="Ej: Campus Santiago">
+
+    <div class="invalid-feedback" id="errorContacto"></div>
+
+</div>
+
+<div class="mb-4">
+
+    <label for="imagen" class="form-label">
+        Imagen del producto
+    </label>
+
+    <input
+        type="file"
+        class="form-control"
+        id="imagen"
+        accept="image/png, image/jpeg, image/webp">
+
+    <div class="ayuda-campo">
+        Opcional. JPG, PNG o WEBP, hasta 3 MB.
+    </div>
+
+    <div class="invalid-feedback" id="errorImagen"></div>
+
+
+    <div
+        id="vistaPrevia"
+        class="vista-previa"
+        hidden>
+
+        <img id="imagenPrevia" alt="Vista previa del producto">
+
+        <button
+            type="button"
+            id="quitarImagen"
+            class="btn-quitar-imagen">
+
+            Quitar imagen
+
+        </button>
+
+    </div>
+
+</div>
+</form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<footer class="site-footer">
+    <p>Desarrollo Web y Móvil 2026</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/productos.js"></script>
+<script src="js/tarjetas.js"></script>
+</body>
+
+</html>
