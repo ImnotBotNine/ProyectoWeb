@@ -783,3 +783,121 @@
     }
 
 }
+
+
+/* =========================================
+   ESTADO DEL PRODUCTO
+   ========================================= */
+
+.producto-encabezado {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.estado-disponible {
+
+    background-color: #1f7a4d;
+
+    color: var(--text-white);
+
+}
+
+
+.estado-vendido {
+
+    background-color: #6b7280;
+
+    color: var(--text-white);
+
+}
+
+
+.producto-vendido .producto-imagen {
+
+    opacity: 0.55;
+
+}
+
+
+.producto-vendido .producto-nombre {
+
+    text-decoration: line-through;
+
+}
+
+
+.btn-estado {
+
+    flex: 1;
+
+    border: 1px solid #cdd2d9;
+
+    border-radius: 7px;
+
+    padding: 9px;
+
+    background-color: transparent;
+
+    color: var(--text-white);
+
+    font-size: 0.9rem;
+
+}
+
+
+.btn-estado:hover {
+
+    background-color: rgba(255, 255, 255, 0.12);
+
+}
+
+
+.btn-eliminar {
+
+    width: 42px;
+
+    border: 1px solid #cdd2d9;
+
+    border-radius: 7px;
+
+    background-color: transparent;
+
+    font-size: 1rem;
+
+}
+
+
+.btn-eliminar:hover {
+
+    background-color: var(--color-acento);
+
+    border-color: var(--color-acento);
+
+}
+
+
+.detalle-vendido {
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    background-color: #f4f5f7;
+
+    color: #69717c;
+
+    text-align: center;
+
+    font-weight: bold;
+
+}

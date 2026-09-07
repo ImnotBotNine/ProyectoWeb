@@ -56,6 +56,9 @@ const precioMaximo =
 const ordenProductos =
     document.getElementById("ordenProductos");
 
+const filtroEstado =
+    document.getElementById("filtroEstado");
+
 const contadorProductos =
     document.getElementById("contadorProductos");
 
@@ -98,17 +101,34 @@ function obtenerNombreCategoria(categoria) {
    CREAR TARJETA
    ========================================= */
 
+function nombreEstado(producto) {
+
+    if (producto.estado === "vendido") {
+
+        return "Vendido";
+
+    }
+
+    return "Disponible";
+
+}
+
+
 function crearTarjetaProducto(producto) {
 
     const favoritoActivo =
         favoritos.includes(producto.id);
 
 
+    const vendido =
+        producto.estado === "vendido";
+
+
     return `
 
         <article class="col-12 col-sm-6 col-xl-4">
 
-            <div class="producto-card">
+            <div class="producto-card ${vendido ? "producto-vendido" : ""}">
 
 
                 <!-- Imagen del producto -->
@@ -136,11 +156,22 @@ function crearTarjetaProducto(producto) {
                 <div class="producto-contenido">
 
 
-                    <span class="producto-categoria">
+                    <div class="producto-encabezado">
 
-                        ${obtenerNombreCategoria(producto.categoria)}
+                        <span class="producto-categoria">
 
-                    </span>
+                            ${obtenerNombreCategoria(producto.categoria)}
+
+                        </span>
+
+
+                        <span class="badge ${vendido ? "estado-vendido" : "estado-disponible"}">
+
+                            ${nombreEstado(producto)}
+
+                        </span>
+
+                    </div>
 
 
                     <h3 class="producto-nombre">
@@ -197,6 +228,33 @@ function crearTarjetaProducto(producto) {
                             aria-label="Agregar a favoritos">
 
                             ${favoritoActivo ? "♥" : "♡"}
+
+                        </button>
+
+
+                    </div>
+
+
+                    <div class="producto-acciones">
+
+
+                        <button
+                            type="button"
+                            class="btn-estado"
+                            onclick="cambiarEstado(${producto.id})">
+
+                            ${vendido ? "Marcar como disponible" : "Marcar como vendido"}
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="btn-eliminar"
+                            onclick="eliminarProducto(${producto.id})"
+                            aria-label="Eliminar publicación">
+
+                            🗑
 
                         </button>
 
@@ -323,6 +381,19 @@ function aplicarFiltros() {
     }
 
 
+    /* Estado */
+
+    if (filtroEstado.value !== "todos") {
+
+        resultado = resultado.filter(function(producto) {
+
+            return producto.estado === filtroEstado.value;
+
+        });
+
+    }
+
+
     /* Precio */
 
     resultado = resultado.filter(function(producto) {
@@ -374,6 +445,57 @@ function aplicarFiltros() {
 
 
     mostrarProductos(resultado);
+
+}
+
+
+/* =========================================
+   ESTADO DEL PRODUCTO
+   ========================================= */
+
+function cambiarEstado(id) {
+
+    const producto =
+        productos.find(function(item) {
+
+            return item.id === id;
+
+        });
+
+
+    if (!producto) {
+
+        return;
+
+    }
+
+
+    if (producto.estado === "vendido") {
+
+        producto.estado = "disponible";
+
+    } else {
+
+        producto.estado = "vendido";
+
+
+        /* Un producto vendido no puede quedar en el carrito */
+
+        carrito =
+            carrito.filter(function(item) {
+
+                return item.id !== id;
+
+            });
+
+    }
+
+
+    guardarProductos();
+
+    aplicarFiltros();
+
+    mostrarCarrito();
 
 }
 
@@ -458,6 +580,13 @@ function verProducto(id) {
                 </span>
 
 
+                <span class="badge ${producto.estado === "vendido" ? "estado-vendido" : "estado-disponible"}">
+
+                    ${nombreEstado(producto)}
+
+                </span>
+
+
                 <h3 class="detalle-nombre">
 
                     ${producto.nombre}
@@ -518,14 +647,18 @@ function verProducto(id) {
 
                 <!-- Carrito -->
 
-                <button
-                    type="button"
-                    class="btn-ver-producto mt-3 w-100"
-                    onclick="agregarCarrito(${producto.id})">
+                ${producto.estado === "vendido"
+                    ? `<p class="detalle-vendido mt-3">
+                           Este producto ya fue vendido.
+                       </p>`
+                    : `<button
+                           type="button"
+                           class="btn-ver-producto mt-3 w-100"
+                           onclick="agregarCarrito(${producto.id})">
 
-                    Agregar al carrito
+                           Agregar al carrito
 
-                </button>
+                       </button>`}
 
             </div>
 
@@ -560,6 +693,13 @@ function agregarCarrito(id) {
 
 
     if (!producto) {
+
+        return;
+
+    }
+
+
+    if (producto.estado === "vendido") {
 
         return;
 
@@ -747,6 +887,8 @@ function eliminarProducto(id) {
         });
 
 
+    guardarProductos();
+
     aplicarFiltros();
 
     mostrarCarrito();
@@ -769,6 +911,8 @@ function limpiarTodosLosFiltros() {
     precioMaximo.value = "";
 
     ordenProductos.value = "relevancia";
+
+    filtroEstado.value = "todos";
 
     aplicarFiltros();
 
@@ -804,6 +948,12 @@ precioMaximo.addEventListener(
 
 
 ordenProductos.addEventListener(
+    "change",
+    aplicarFiltros
+);
+
+
+filtroEstado.addEventListener(
     "change",
     aplicarFiltros
 );
@@ -854,3 +1004,4 @@ document.addEventListener(
 
     }
 );
+ 

@@ -218,7 +218,9 @@ function crearProducto() {
         vendedor: campoVendedor.value.trim(),
         carrera: campoCarrera.value.trim(),
         contacto: campoContacto.value.trim(),
-        imagen: imagenElegida
+        imagen: imagenElegida,
+        estado: "disponible",
+        publicado: true
     };
 }
  
@@ -238,8 +240,20 @@ function crearResumen(producto) {
     return html;
 }
  
+function misPublicaciones() {
+    const lista = [];
+ 
+    for (let i = 0; i < productos.length; i++) {
+        if (productos[i].publicado === true) {
+            lista.push(productos[i]);
+        }
+    }
+ 
+    return lista;
+}
+ 
 function mostrarPublicados() {
-    const publicadas = leerPublicaciones();
+    const publicadas = misPublicaciones();
     let html = "";
  
     for (let i = 0; i < publicadas.length; i++) {
@@ -283,14 +297,15 @@ function publicarProducto(evento) {
  
     const producto = crearProducto();
  
-    if (guardarPublicacion(producto) === false) {
+    productos.push(producto);
+ 
+    if (guardarProductos() === false) {
+        productos.pop();
         mensajeExito.hidden = true;
         mensajeError.hidden = false;
         mostrarError(CAMPOS[7], "No queda espacio en el navegador. Usa Borrar todas.");
         return;
     }
- 
-    productos.push(producto);
  
     mostrarPublicados();
  
@@ -309,7 +324,16 @@ campoImagen.addEventListener("change", elegirImagen);
 botonQuitarImagen.addEventListener("click", quitarImagen);
  
 botonBorrar.addEventListener("click", function () {
-    borrarPublicaciones();
+    const restantes = [];
+ 
+    for (let i = 0; i < productos.length; i++) {
+        if (productos[i].publicado !== true) {
+            restantes.push(productos[i]);
+        }
+    }
+ 
+    productos = restantes;
+    guardarProductos();
     mostrarPublicados();
 });
  

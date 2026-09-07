@@ -4,6 +4,7 @@ let productos = [
         id: 1,
         nombre: "Calculadora Científica Escolar 240",
         categoria: "otros",
+        estado: "disponible",
         precio: 15000,
         descripcion: "Calculadora científica en buen estado, ideal para estudiantes de ingeniería.",
         vendedor: "Matías Rojas",
@@ -17,6 +18,7 @@ let productos = [
         id: 2,
         nombre: "Libro Cálculo I Universitario",
         categoria: "libros",
+        estado: "disponible",
         precio: 22000,
         descripcion: "Libro de cálculo utilizado durante el primer año universitario. Buen estado.",
         vendedor: "Camila Pérez",
@@ -30,6 +32,7 @@ let productos = [
         id: 3,
         nombre: "Notebook Lenovo Ideapad Slim 3",
         categoria: "computadores",
+        estado: "disponible",
         precio: 450000,
         descripcion: "Notebook para estudio y trabajo. Incluye cargador y se encuentra en buen estado.",
         vendedor: "Diego González",
@@ -43,6 +46,7 @@ let productos = [
         id: 4,
         nombre: "Audifonos Bluetooh Active Silence Studio",
         categoria: "accesorios",
+        estado: "disponible",
         precio: 25000,
         descripcion: "Audífonos inalámbricos con estuche de carga y buena autonomía.",
         vendedor: "Valentina Soto",
@@ -56,6 +60,7 @@ let productos = [
         id: 5,
         nombre: "Guitarra Acústica Vizcaya Arcg44 Cuerdas De Nylon Sunburst",
         categoria: "instrumentos",
+        estado: "disponible",
         precio: 85000,
         descripcion: "Guitarra acústica ideal para principiantes. Incluye funda.",
         vendedor: "Sebastián Muñoz",
@@ -69,6 +74,7 @@ let productos = [
         id: 6,
         nombre: "Balón De Futbol Dribbling Drb Prime N°5",
         categoria: "deportes",
+        estado: "disponible",
         precio: 12000,
         descripcion: "Balón de fútbol en buen estado para entrenamientos y partidos.",
         vendedor: "Felipe Torres",
@@ -82,6 +88,7 @@ let productos = [
         id: 7,
         nombre: "Mouse Inalámbrico Hp 150",
         categoria: "accesorios",
+        estado: "disponible",
         precio: 10000,
         descripcion: "Mouse inalámbrico compacto y cómodo para estudiar o trabajar.",
         vendedor: "Javiera Silva",
@@ -95,6 +102,7 @@ let productos = [
         id: 8,
         nombre: "Libro Programación Java",
         categoria: "libros",
+        estado: "disponible",
         precio: 18000,
         descripcion: "Libro introductorio de programación en Java para estudiantes.",
         vendedor: "Nicolás Fuentes",
@@ -108,6 +116,7 @@ let productos = [
         id: 9,
         nombre: "Mochila Notebook Impermeable Antirrobo",
         categoria: "otros",
+        estado: "disponible",
         precio: 20000,
         descripcion: "Mochila con compartimento para notebook y múltiples bolsillos.",
         vendedor: "Francisca Díaz",
@@ -118,27 +127,24 @@ let productos = [
  
 ];
  
-const CLAVE_PUBLICACIONES = "infragantiPublicaciones";
+ 
+/* =========================================
+   GUARDADO EN EL NAVEGADOR
+ 
+   localStorage es una caja del navegador donde se pueden
+   dejar datos que no se pierden al recargar ni al cambiar
+   de pagina. No es un servidor: viven en este equipo.
+ 
+   Solo guarda texto, por eso el arreglo se convierte a
+   texto al guardar y vuelve a ser arreglo al leer.
+   ========================================= */
+ 
+const CLAVE_PRODUCTOS = "infragantiProductos";
  
  
-function leerPublicaciones() {
-    const guardado = localStorage.getItem(CLAVE_PUBLICACIONES);
- 
-    if (guardado === null) {
-        return [];
-    }
- 
-    return JSON.parse(guardado);
-}
- 
- 
-function guardarPublicacion(producto) {
-    const publicadas = leerPublicaciones();
- 
-    publicadas.push(producto);
- 
+function guardarProductos() {
     try {
-        localStorage.setItem(CLAVE_PUBLICACIONES, JSON.stringify(publicadas));
+        localStorage.setItem(CLAVE_PRODUCTOS, JSON.stringify(productos));
         return true;
     } catch (error) {
         return false;
@@ -146,18 +152,13 @@ function guardarPublicacion(producto) {
 }
  
  
-function borrarPublicaciones() {
-    localStorage.removeItem(CLAVE_PUBLICACIONES);
-}
+function cargarProductos() {
+    const guardado = localStorage.getItem(CLAVE_PRODUCTOS);
  
- 
-function agregarPublicacionesGuardadas() {
-    const publicadas = leerPublicaciones();
- 
-    for (let i = 0; i < publicadas.length; i++) {
-        productos.push(publicadas[i]);
+    if (guardado !== null) {
+        productos = JSON.parse(guardado);
     }
 }
  
  
-agregarPublicacionesGuardadas();
+cargarProductos();
