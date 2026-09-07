@@ -1,10 +1,5 @@
-
-/* =========================================
-   PRODUCTOS
-   ========================================= */
-
 let productos = [
-
+ 
     {
         id: 1,
         nombre: "Calculadora Científica Escolar 240",
@@ -16,8 +11,8 @@ let productos = [
         contacto: "Campus Santiago",
         imagen: "./assets/img/productos/calculadora.jpg"
     },
-
-
+ 
+ 
     {
         id: 2,
         nombre: "Libro Cálculo I Universitario",
@@ -29,8 +24,8 @@ let productos = [
         contacto: "Campus Santiago",
         imagen: "./assets/img/productos/calculo.jpg"
     },
-
-
+ 
+ 
     {
         id: 3,
         nombre: "Notebook Lenovo Ideapad Slim 3",
@@ -42,8 +37,8 @@ let productos = [
         contacto: "Campus Santiago",
         imagen: "./assets/img/productos/notebook.jpg"
     },
-
-
+ 
+ 
     {
         id: 4,
         nombre: "Audifonos Bluetooh Active Silence Studio",
@@ -55,8 +50,8 @@ let productos = [
         contacto: "Campus Santiago",
         imagen: "./assets/img/productos/audifonos.jpg"
     },
-
-
+ 
+ 
     {
         id: 5,
         nombre: "Guitarra Acústica Vizcaya Arcg44 Cuerdas De Nylon Sunburst",
@@ -68,8 +63,8 @@ let productos = [
         contacto: "Campus Santiago",
         imagen: "./assets/img/productos/guitarra.jpg"
     },
-
-
+ 
+ 
     {
         id: 6,
         nombre: "Balón De Futbol Dribbling Drb Prime N°5",
@@ -81,8 +76,8 @@ let productos = [
         contacto: "Campus Santiago",
         imagen: "./assets/img/productos/balon.jpg"
     },
-
-
+ 
+ 
     {
         id: 7,
         nombre: "Mouse Inalámbrico Hp 150",
@@ -94,8 +89,8 @@ let productos = [
         contacto: "Campus Santiago",
         imagen: "./assets/img/productos/mouse.jpg"
     },
-
-
+ 
+ 
     {
         id: 8,
         nombre: "Libro Programación Java",
@@ -107,8 +102,8 @@ let productos = [
         contacto: "Campus Santiago",
         imagen: "./assets/img/productos/java.jpg"
     },
-
-
+ 
+ 
     {
         id: 9,
         nombre: "Mochila Notebook Impermeable Antirrobo",
@@ -120,5 +115,49 @@ let productos = [
         contacto: "Campus Santiago",
         imagen: "./assets/img/productos/mochila.jpg"
     }
-
+ 
 ];
+ 
+const CLAVE_PUBLICACIONES = "infragantiPublicaciones";
+ 
+ 
+function leerPublicaciones() {
+    const guardado = localStorage.getItem(CLAVE_PUBLICACIONES);
+ 
+    if (guardado === null) {
+        return [];
+    }
+ 
+    return JSON.parse(guardado);
+}
+ 
+ 
+function guardarPublicacion(producto) {
+    const publicadas = leerPublicaciones();
+ 
+    publicadas.push(producto);
+ 
+    try {
+        localStorage.setItem(CLAVE_PUBLICACIONES, JSON.stringify(publicadas));
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+ 
+ 
+function borrarPublicaciones() {
+    localStorage.removeItem(CLAVE_PUBLICACIONES);
+}
+ 
+ 
+function agregarPublicacionesGuardadas() {
+    const publicadas = leerPublicaciones();
+ 
+    for (let i = 0; i < publicadas.length; i++) {
+        productos.push(publicadas[i]);
+    }
+}
+ 
+ 
+agregarPublicacionesGuardadas();

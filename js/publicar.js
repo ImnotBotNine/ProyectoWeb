@@ -1,5 +1,7 @@
 const PRECIO_MAXIMO = 10000000;
 const LARGO_MINIMO_DESCRIPCION = 20;
+const PESO_MAXIMO_IMAGEN = 5000000;
+const ANCHO_MAXIMO_IMAGEN = 800;
  
 const NOMBRES_CATEGORIAS = {
     libros: "Libros",
@@ -29,6 +31,7 @@ const listaPublicados = document.getElementById("listaPublicados");
 const vistaPrevia = document.getElementById("vistaPrevia");
 const imagenPrevia = document.getElementById("imagenPrevia");
 const botonQuitarImagen = document.getElementById("quitarImagen");
+const botonBorrar = document.getElementById("borrarPublicaciones");
  
 const CAMPOS = [
     { campo: campoNombre, error: "errorNombre", nombre: "el nombre del producto", minimo: 5, maximo: 80 },
@@ -40,8 +43,6 @@ const CAMPOS = [
     { campo: campoContacto, error: "errorContacto", nombre: "el lugar de entrega", minimo: 3, maximo: 60 },
     { campo: campoImagen, error: "errorImagen", nombre: "la imagen", tipo: "imagen" }
 ];
- 
-const publicados = [];
  
 let imagenElegida = "";
  
@@ -56,7 +57,7 @@ function borrarError(datos) {
     document.getElementById(datos.error).textContent = "";
     return true;
 }
-
+ 
 function validarTexto(datos) {
     const valor = datos.campo.value.trim();
  
@@ -130,7 +131,7 @@ function validarFormulario() {
  
     return todoBien;
 }
-
+ 
 function quitarImagen() {
     imagenElegida = "";
     campoImagen.value = "";
@@ -152,17 +153,47 @@ function elegirImagen() {
         return mostrarError(datos, "El archivo debe ser una imagen.");
     }
  
+    if (archivo.size > PESO_MAXIMO_IMAGEN) {
+        quitarImagen();
+        return mostrarError(datos, "La imagen no puede pesar más de 5 MB.");
+    }
+ 
     const lector = new FileReader();
  
     lector.onload = function () {
-        imagenElegida = lector.result;
-        imagenPrevia.src = lector.result;
-        vistaPrevia.hidden = false;
+        achicarImagen(lector.result);
     };
  
     lector.readAsDataURL(archivo);
  
     return borrarError(datos);
+}
+ 
+function achicarImagen(imagenOriginal) {
+    const imagen = new Image();
+ 
+    imagen.onload = function () {
+        let ancho = imagen.width;
+        let alto = imagen.height;
+ 
+        if (ancho > ANCHO_MAXIMO_IMAGEN) {
+            alto = Math.round(alto * ANCHO_MAXIMO_IMAGEN / ancho);
+            ancho = ANCHO_MAXIMO_IMAGEN;
+        }
+ 
+        const lienzo = document.createElement("canvas");
+        lienzo.width = ancho;
+        lienzo.height = alto;
+ 
+        const pincel = lienzo.getContext("2d");
+        pincel.drawImage(imagen, 0, 0, ancho, alto);
+ 
+        imagenElegida = lienzo.toDataURL("image/jpeg", 0.7);
+        imagenPrevia.src = imagenElegida;
+        vistaPrevia.hidden = false;
+    };
+ 
+    imagen.src = imagenOriginal;
 }
  
 function siguienteId() {
@@ -208,14 +239,20 @@ function crearResumen(producto) {
 }
  
 function mostrarPublicados() {
+    const publicadas = leerPublicaciones();
     let html = "";
  
-    for (let i = 0; i < publicados.length; i++) {
-        html += crearResumen(publicados[i]);
+    for (let i = 0; i < publicadas.length; i++) {
+        html += crearResumen(publicadas[i]);
     }
  
     listaPublicados.innerHTML = html;
-    seccionPublicados.hidden = false;
+ 
+    if (publicadas.length > 0) {
+        seccionPublicados.hidden = false;
+    } else {
+        seccionPublicados.hidden = true;
+    }
 }
  
 function vaciarCampos() {
@@ -246,8 +283,14 @@ function publicarProducto(evento) {
  
     const producto = crearProducto();
  
+    if (guardarPublicacion(producto) === false) {
+        mensajeExito.hidden = true;
+        mensajeError.hidden = false;
+        mostrarError(CAMPOS[7], "No queda espacio en el navegador. Usa Borrar todas.");
+        return;
+    }
+ 
     productos.push(producto);
-    publicados.push(producto);
  
     mostrarPublicados();
  
@@ -265,6 +308,11 @@ campoImagen.addEventListener("change", elegirImagen);
  
 botonQuitarImagen.addEventListener("click", quitarImagen);
  
+botonBorrar.addEventListener("click", function () {
+    borrarPublicaciones();
+    mostrarPublicados();
+});
+ 
 campoDescripcion.addEventListener("input", function () {
     const largo = campoDescripcion.value.trim().length;
  
@@ -280,3 +328,5 @@ for (let i = 0; i < CAMPOS.length; i++) {
         validarCampo(CAMPOS[i]);
     });
 }
+ 
+mostrarPublicados();
