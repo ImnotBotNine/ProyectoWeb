@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Infraganti</string>
+    <string name="title_activity_main">Infraganti</string>
+    <string name="package_name">cl.infraganti.marketplace</string>
+    <string name="custom_url_scheme">cl.infraganti.marketplace</string>
+</resources>
